@@ -39,43 +39,92 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm sticky top-0 z-50">
+      <nav className="backdrop-blur-xl bg-black/20 border-b border-white/10 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <h1 className="text-xl font-bold text-gray-900">Shubham Kumar</h1>
+              <h1 className="text-xl font-bold text-white font-space-grotesk">Shubham Attri</h1>
             </div>
             <div className="flex items-center space-x-8">
-              <a href="#about" className="text-gray-700 hover:text-blue-600">About</a>
-              <a href="#experience" className="text-gray-700 hover:text-blue-600">Experience</a>
-              <a href="#awards" className="text-gray-700 hover:text-blue-600">Awards</a>
-              <a href="#skills" className="text-gray-700 hover:text-blue-600">Skills</a>
-              <a href="/blog" className="text-gray-700 hover:text-blue-600">Blog</a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600">Contact</a>
+              <a href="#about" className="text-gray-300 hover:text-white transition-colors">About</a>
+              <a href="#experience" className="text-gray-300 hover:text-white transition-colors">Experience</a>
+              <a href="#awards" className="text-gray-300 hover:text-white transition-colors">Awards</a>
+              <a href="#skills" className="text-gray-300 hover:text-white transition-colors">Skills</a>
+              <a href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</a>
+              <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="min-h-screen bg-[#0A0A0A] relative flex items-center justify-center overflow-hidden">
+        {/* Background noise/gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#1A1A1A] to-[#0A0A0A] opacity-80"></div>
+        <div className="absolute inset-0 opacity-30" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }}></div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl font-bold mb-6">Hi, I'm Shubham Kumar</h1>
+            <div className="backdrop-blur-xl bg-white/5 rounded-3xl p-12 border border-white/10 shadow-2xl">
+              <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Shubham Attri
+              </h1>
+            </div>
           </AnimatedSection>
+          
           <AnimatedSection delay={0.2}>
-            <p className="text-xl mb-8">Senior Software Engineer & Tech Leader with 5+ years of experience</p>
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 font-light">
+              Engineering systems. Exploring ideas. Building in public.
+            </p>
           </AnimatedSection>
+          
           <AnimatedSection delay={0.4}>
-            <p className="text-lg mb-8">IIT Delhi Graduate | Full-Stack Developer | GitHub Copilot SPOC | Award-Winning Professional</p>
-          </AnimatedSection>
-          <AnimatedSection delay={0.6}>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-              View My Work
+            <button className="group relative px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-medium hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+              <span className="relative z-10">Explore My World</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Feature Navigation Cards */}
+      <section className="py-20 bg-[#0A0A0A]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            <AnimatedSection delay={0.1}>
+              <div className="group cursor-pointer">
+                <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:scale-105 hover:bg-white/10">
+                  <div className="text-4xl mb-4">🧠</div>
+                  <h3 className="text-xl font-semibold text-white mb-3">Blog</h3>
+                  <p className="text-gray-400">Deep dives, ideas, and thoughts</p>
+                </div>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection delay={0.2}>
+              <div className="group cursor-pointer">
+                <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:scale-105 hover:bg-white/10">
+                  <div className="text-4xl mb-4">🛠️</div>
+                  <h3 className="text-xl font-semibold text-white mb-3">Projects</h3>
+                  <p className="text-gray-400">Things I've built and shipped</p>
+                </div>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection delay={0.3}>
+              <div className="group cursor-pointer">
+                <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:scale-105 hover:bg-white/10">
+                  <div className="text-4xl mb-4">🤖</div>
+                  <h3 className="text-xl font-semibold text-white mb-3">Playground</h3>
+                  <p className="text-gray-400">Experiments and curiosities</p>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
