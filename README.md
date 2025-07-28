@@ -123,7 +123,6 @@ If you prefer the separate Express.js backend:
 The backend will run on `http://localhost:5000`
 
 
-
 ## 🎯 Features
 
 ### ✨ Frontend Features
@@ -242,4 +241,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-For questions or support, please reach out through the contact form on the website. 
+For questions or support, please reach out through the contact form on the website.
