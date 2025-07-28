@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
 import LoadingScreen from '@/components/LoadingScreen';
 import SparkleEffect from '@/components/SparkleEffect';
-import SpotlightProject from '@/components/SpotlightProject';
+
 import * as React from 'react';
 import { Command } from 'cmdk';
 import Navbar from '@/components/Navbar';
@@ -17,7 +17,7 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState('');
-  const [currentTime, setCurrentTime] = React.useState(new Date());
+
   const [isLoading, setIsLoading] = React.useState(true);
   const [paletteOpen, setPaletteOpen] = React.useState(false);
   const paletteRef = React.useRef<HTMLDivElement>(null);
@@ -34,10 +34,7 @@ export default function Home() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  React.useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
+
 
   // Navigation handlers
   const scrollToSection = (sectionId: string) => {
@@ -47,48 +44,7 @@ export default function Home() {
     }
   };
 
-  // Command panel handlers
-  const handleCommandClick = (command: string) => {
-    switch (command) {
-      case 'blog':
-        window.location.href = '/blog';
-        break;
-      case 'about':
-        window.location.href = '/about';
-        break;
-      case 'playground':
-        window.location.href = '/work';
-        break;
-      default:
-        break;
-    }
-  };
 
-  // Smart link handlers
-  const handleSmartLinkClick = (intent: string) => {
-    switch (intent) {
-      case 'hire':
-        scrollToSection('contact');
-        break;
-      case 'blog':
-        window.location.href = '/blog';
-        break;
-      case 'about':
-        window.location.href = '/about';
-        break;
-      case 'resume':
-        alert('Resume download coming soon! 📄');
-        break;
-      case 'contact':
-        scrollToSection('contact');
-        break;
-      case 'github':
-        window.open('https://github.com', '_blank');
-        break;
-      default:
-        break;
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

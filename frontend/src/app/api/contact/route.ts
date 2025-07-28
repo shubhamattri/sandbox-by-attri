@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Only initialize Resend if API key is available
-const getResend = () => {
+const getResend = async () => {
   if (!process.env.RESEND_API_KEY) {
     return null;
   }
   // Dynamic import to avoid build-time errors
-  const { Resend } = require('resend');
+  const { Resend } = await import('resend');
   return new Resend(process.env.RESEND_API_KEY);
 };
 
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send email if API key is available
-    const resend = getResend();
+    const resend = await getResend();
     if (resend) {
       await resend.emails.send({
         from: 'Shubham Attri <sattri12@gmail.com>',
