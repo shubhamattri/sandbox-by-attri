@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     const resend = getResend();
     if (resend) {
       await resend.emails.send({
-        from: 'Shubham Attri <noreply@yourdomain.com>',
+        from: 'Shubham Attri <sattri12@gmail.com>',
         to: ['sattri12@gmail.com'],
         subject: `New message from ${name}`,
         html: `
