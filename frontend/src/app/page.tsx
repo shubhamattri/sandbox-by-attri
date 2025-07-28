@@ -516,9 +516,9 @@ export default function Home() {
                 </p>
                 <div className="flex justify-center items-center gap-4 sm:gap-6 mb-6">
                   <motion.a
-                    href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
+                    href="https://github.com/shubhamattri"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
@@ -527,9 +527,9 @@ export default function Home() {
                     </svg>
                   </motion.a>
                   <motion.a
-                    href="https://linkedin.com"
-          target="_blank"
-          rel="noopener noreferrer"
+                    href="https://www.linkedin.com/in/shubham-attri/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
@@ -538,7 +538,7 @@ export default function Home() {
                     </svg>
                   </motion.a>
                   <motion.a
-                    href="mailto:shubham@example.com"
+                    href="mailto:sattri12@gmail.com"
                     whileHover={{ scale: 1.1, y: -2 }}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
