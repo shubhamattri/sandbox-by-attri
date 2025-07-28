@@ -17,6 +17,7 @@ export default function Navbar() {
   const router = useRouter();
   const [scrolled, setScrolled] = React.useState(false);
   const [showTooltip, setShowTooltip] = React.useState(false);
+  const [isContactActive, setIsContactActive] = React.useState(false);
 
   React.useEffect(() => {
     const onScroll = () => {
@@ -34,6 +35,28 @@ export default function Navbar() {
       router.push('/');
     }
   };
+
+  // Check if contact section is in view and update active state
+  React.useEffect(() => {
+    const checkContactActive = () => {
+      if (pathname === '/') {
+        const contactEl = document.getElementById('contact');
+        if (contactEl) {
+          const rect = contactEl.getBoundingClientRect();
+          const isInView = rect.top <= 100 && rect.bottom >= 100;
+          setIsContactActive(isInView);
+        }
+      } else {
+        setIsContactActive(false);
+      }
+    };
+
+    if (pathname === '/') {
+      checkContactActive();
+      window.addEventListener('scroll', checkContactActive);
+      return () => window.removeEventListener('scroll', checkContactActive);
+    }
+  }, [pathname]);
 
   // On homepage mount, scroll to contact if needed
   React.useEffect(() => {
@@ -84,7 +107,10 @@ export default function Navbar() {
           </div>
           <div className="flex items-center space-x-8">
             {links.map((link) => {
-              const isActive = pathname.startsWith(link.href.replace('/#contact', ''));
+              const isActive = link.href === '/#contact' 
+                ? isContactActive
+                : pathname === link.href;
+              
               if (link.label === 'Contact') {
                 return (
                   <Link
@@ -116,8 +142,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative transition-colors duration-200 px-1 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-purple-400 ${
                     isActive
-                      ? 'text-purple-400 font-medium bg-purple-400/10 rounded'
-                      : 'text-gray-300 hover:text-white'
+                        ? 'text-purple-400 font-medium bg-purple-400/10 rounded'
+                        : 'text-gray-300 hover:text-white'
                   }`}
                   style={{ transition: 'background 0.3s, color 0.3s' }}
                   aria-current={isActive ? 'page' : undefined}
