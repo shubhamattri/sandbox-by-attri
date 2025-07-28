@@ -23,6 +23,59 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
+  // Navigation handlers
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Command panel handlers
+  const handleCommandClick = (command: string) => {
+    switch (command) {
+      case 'blog':
+        window.location.href = '/blog';
+        break;
+      case 'projects':
+        scrollToSection('experience');
+        break;
+      case 'playground':
+        // Could link to a projects page or experiments
+        alert('Playground coming soon! 🚀');
+        break;
+      default:
+        break;
+    }
+  };
+
+  // Smart link handlers
+  const handleSmartLinkClick = (intent: string) => {
+    switch (intent) {
+      case 'hire':
+        scrollToSection('contact');
+        break;
+      case 'learn':
+        window.location.href = '/blog';
+        break;
+      case 'collaborate':
+        scrollToSection('contact');
+        break;
+      case 'resume':
+        // Could open resume in new tab
+        alert('Resume download coming soon! 📄');
+        break;
+      case 'contact':
+        scrollToSection('contact');
+        break;
+      case 'github':
+        window.open('https://github.com', '_blank');
+        break;
+      default:
+        break;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -59,12 +112,12 @@ export default function Home() {
               <h1 className="text-xl font-bold text-white font-space-grotesk">Shubham Attri</h1>
             </div>
             <div className="flex items-center space-x-8">
-              <a href="#about" className="text-gray-300 hover:text-white transition-colors">About</a>
-              <a href="#experience" className="text-gray-300 hover:text-white transition-colors">Experience</a>
-              <a href="#awards" className="text-gray-300 hover:text-white transition-colors">Awards</a>
-              <a href="#skills" className="text-gray-300 hover:text-white transition-colors">Skills</a>
+              <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-white transition-colors">About</button>
+              <button onClick={() => scrollToSection('experience')} className="text-gray-300 hover:text-white transition-colors">Experience</button>
+              <button onClick={() => scrollToSection('awards')} className="text-gray-300 hover:text-white transition-colors">Awards</button>
+              <button onClick={() => scrollToSection('skills')} className="text-gray-300 hover:text-white transition-colors">Skills</button>
               <a href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
+              <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-white transition-colors">Contact</button>
             </div>
           </div>
         </div>
@@ -113,7 +166,10 @@ export default function Home() {
           </AnimatedSection>
           
           <AnimatedSection delay={0.8}>
-            <button className="group relative px-10 py-5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-medium hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 mt-12">
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="group relative px-10 py-5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-medium hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 mt-12"
+            >
               <span className="relative z-10 flex items-center gap-2">
                 Explore My World
                 <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -153,7 +209,7 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedSection delay={0.1}>
-              <div className="group cursor-pointer">
+              <div className="group cursor-pointer" onClick={() => handleCommandClick('blog')}>
                 <div className="backdrop-blur-xl bg-gradient-to-br from-white/5 to-purple-500/5 rounded-3xl p-10 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:ring-2 hover:ring-purple-500/20 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10">
@@ -172,7 +228,7 @@ export default function Home() {
             </AnimatedSection>
             
             <AnimatedSection delay={0.2}>
-              <div className="group cursor-pointer">
+              <div className="group cursor-pointer" onClick={() => handleCommandClick('projects')}>
                 <div className="backdrop-blur-xl bg-gradient-to-br from-white/5 to-blue-500/5 rounded-3xl p-10 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:ring-2 hover:ring-blue-500/20 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10">
@@ -191,7 +247,7 @@ export default function Home() {
             </AnimatedSection>
             
             <AnimatedSection delay={0.3}>
-              <div className="group cursor-pointer">
+              <div className="group cursor-pointer" onClick={() => handleCommandClick('playground')}>
                 <div className="backdrop-blur-xl bg-gradient-to-br from-white/5 to-green-500/5 rounded-3xl p-10 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:ring-2 hover:ring-green-500/20 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10">
@@ -316,12 +372,12 @@ export default function Home() {
           <AnimatedSection delay={0.2}>
             <div className="flex flex-wrap justify-center gap-4">
               {[
-                { label: "🔍 Looking to Hire Me", color: "purple" },
-                { label: "🧠 Want to Learn Something", color: "blue" },
-                { label: "🤝 Want to Collaborate", color: "green" },
-                { label: "💼 View My Resume", color: "yellow" },
-                { label: "📧 Get in Touch", color: "pink" },
-                { label: "🐙 Check My GitHub", color: "gray" }
+                { label: "🔍 Looking to Hire Me", color: "purple", intent: "hire" },
+                { label: "🧠 Want to Learn Something", color: "blue", intent: "learn" },
+                { label: "🤝 Want to Collaborate", color: "green", intent: "collaborate" },
+                { label: "💼 View My Resume", color: "yellow", intent: "resume" },
+                { label: "📧 Get in Touch", color: "pink", intent: "contact" },
+                { label: "🐙 Check My GitHub", color: "gray", intent: "github" }
               ].map((item, index) => (
                 <motion.button
                   key={item.label}
@@ -330,6 +386,7 @@ export default function Home() {
                   transition={{ delay: 0.3 + index * 0.1, duration: 0.3 }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => handleSmartLinkClick(item.intent)}
                   className={`group backdrop-blur-sm bg-white/5 border border-white/10 rounded-full px-6 py-3 text-white font-medium hover:bg-white/10 transition-all duration-300 hover:shadow-lg hover:shadow-${item.color}-500/20 hover:border-${item.color}-500/30`}
                 >
                   <span className="flex items-center gap-2">
@@ -386,259 +443,301 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 bg-gray-50">
+      <section id="experience" className="py-20 bg-[#0A0A0A]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Experience</h2>
+          <AnimatedSection>
+            <h2 className="text-3xl font-bold text-center mb-12 text-white font-space-grotesk">Experience</h2>
+          </AnimatedSection>
           <div className="space-y-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-2">Senior Software Engineer & Tech Leader</h3>
-              <p className="text-blue-600 mb-2">Societe Generale • 2022 - Present</p>
-              <ul className="text-gray-700 space-y-2">
-                <li>• Led high-performing team of 5 engineers, focusing on scalable, secure, testable delivery</li>
-                <li>• Drove GitHub Copilot adoption as SPOC for 30+ engineers across the organization</li>
-                <li>• Provided 1:1 mentorship on architecture, clean code, and performance optimization</li>
-                <li>• Served as SME for legacy UC4 + PL/SQL systems, managing production support and incident resolution</li>
-                <li>• Conducted design reviews and steered roadmap for legacy decomposition</li>
-              </ul>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-2">Software Engineer</h3>
-              <p className="text-blue-600 mb-2">Capgemini • 2020 - 2022</p>
-              <ul className="text-gray-700 space-y-2">
-                <li>• Developed and maintained enterprise-level applications using modern technologies</li>
-                <li>• Collaborated with cross-functional teams in agile environment</li>
-                <li>• Implemented CI/CD pipelines and automated testing procedures</li>
-                <li>• Contributed to knowledge transfer sessions and technical workshops</li>
-              </ul>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-2">MEAN Stack Developer</h3>
-              <p className="text-blue-600 mb-2">TheRightDoctors, Hyderabad • May 2019 - July 2019</p>
-              <ul className="text-gray-700 space-y-2">
-                <li>• Created Single Sign-on layer for 7 platforms using JSON Web Tokens</li>
-                <li>• Redesigned storage structures for web platforms in MySQL</li>
-                <li>• Built platform for Public Relationship Teams with Razorpay integration</li>
-                <li>• Designed complex archiving architecture for videos/audios</li>
-                <li>• Implemented social media buttons and weekly scheduler functionality</li>
-              </ul>
-            </div>
+            <AnimatedSection delay={0.1}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-2 text-white font-space-grotesk">Senior Software Engineer & Tech Leader</h3>
+                <p className="text-purple-400 mb-4">Societe Generale • 2022 - Present</p>
+                <ul className="text-gray-300 space-y-2">
+                  <li>• Led high-performing team of 5 engineers, focusing on scalable, secure, testable delivery</li>
+                  <li>• Drove GitHub Copilot adoption as SPOC for 30+ engineers across the organization</li>
+                  <li>• Provided 1:1 mentorship on architecture, clean code, and performance optimization</li>
+                  <li>• Served as SME for legacy UC4 + PL/SQL systems, managing production support and incident resolution</li>
+                  <li>• Conducted design reviews and steered roadmap for legacy decomposition</li>
+                </ul>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-2 text-white font-space-grotesk">Software Engineer</h3>
+                <p className="text-blue-400 mb-4">Capgemini • 2020 - 2022</p>
+                <ul className="text-gray-300 space-y-2">
+                  <li>• Developed and maintained enterprise-level applications using modern technologies</li>
+                  <li>• Collaborated with cross-functional teams in agile environment</li>
+                  <li>• Implemented CI/CD pipelines and automated testing procedures</li>
+                  <li>• Contributed to knowledge transfer sessions and technical workshops</li>
+                </ul>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.3}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-2 text-white font-space-grotesk">MEAN Stack Developer</h3>
+                <p className="text-green-400 mb-4">TheRightDoctors, Hyderabad • May 2019 - July 2019</p>
+                <ul className="text-gray-300 space-y-2">
+                  <li>• Created Single Sign-on layer for 7 platforms using JSON Web Tokens</li>
+                  <li>• Redesigned storage structures for web platforms in MySQL</li>
+                  <li>• Built platform for Public Relationship Teams with Razorpay integration</li>
+                  <li>• Designed complex archiving architecture for videos/audios</li>
+                  <li>• Implemented social media buttons and weekly scheduler functionality</li>
+                </ul>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Education Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Education</h2>
-          <div className="bg-gray-50 p-8 rounded-lg max-w-2xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-2">Indian Institute of Technology, Delhi</h3>
-            <p className="text-blue-600 mb-2">Bachelor of Technology in Computer Science & Engineering</p>
-            <p className="text-gray-600 mb-4">2016 - 2020</p>
-            <p className="text-gray-700">
-              Graduated with distinction. Specialized in algorithms, data structures, and software engineering. 
-              Completed research projects in AI/ML including Atari Breakout CNN model and Yinsh AI-Bot development.
-            </p>
-          </div>
+          <AnimatedSection>
+            <h2 className="text-3xl font-bold text-center mb-12 text-white font-space-grotesk">Education</h2>
+          </AnimatedSection>
+          <AnimatedSection delay={0.2}>
+            <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-semibold mb-2 text-white font-space-grotesk">Indian Institute of Technology, Delhi</h3>
+              <p className="text-purple-400 mb-2">Bachelor of Technology in Computer Science & Engineering</p>
+              <p className="text-gray-400 mb-4">2016 - 2020</p>
+              <p className="text-gray-300">
+                Graduated with distinction. Specialized in algorithms, data structures, and software engineering. 
+                Completed research projects in AI/ML including Atari Breakout CNN model and Yinsh AI-Bot development.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Awards & Recognition Section */}
-      <section id="awards" className="py-20 bg-gray-50">
+      <section id="awards" className="py-20 bg-[#0A0A0A]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Awards & Recognition</h2>
+          <AnimatedSection>
+            <h2 className="text-3xl font-bold text-center mb-12 text-white font-space-grotesk">Awards & Recognition</h2>
+          </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="text-4xl mb-4">🏆</div>
-              <h3 className="text-xl font-semibold mb-2">Star of the Quarter</h3>
-              <p className="text-blue-600 mb-2">2024</p>
-              <p className="text-gray-700">For leading critical modernization and cross-border project execution</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="text-4xl mb-4">🌟</div>
-              <h3 className="text-xl font-semibold mb-2">Selected for SA Role in Paris</h3>
-              <p className="text-blue-600 mb-2">2023</p>
-              <p className="text-gray-700">In recognition of delivery excellence, client collaboration, and platform leadership</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="text-4xl mb-4">🎯</div>
-              <h3 className="text-xl font-semibold mb-2">Award for Value of Commitment & Responsibility</h3>
-              <p className="text-blue-600 mb-2">2022</p>
-              <p className="text-gray-700">For delivering deadline-driven projects without delay</p>
-            </div>
+            <AnimatedSection delay={0.1}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 text-center">
+                <div className="text-4xl mb-4">🏆</div>
+                <h3 className="text-xl font-semibold mb-2 text-white font-space-grotesk">Star of the Quarter</h3>
+                <p className="text-purple-400 mb-2">2024</p>
+                <p className="text-gray-300">For leading critical modernization and cross-border project execution</p>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 text-center">
+                <div className="text-4xl mb-4">🌟</div>
+                <h3 className="text-xl font-semibold mb-2 text-white font-space-grotesk">Selected for SA Role in Paris</h3>
+                <p className="text-blue-400 mb-2">2023</p>
+                <p className="text-gray-300">In recognition of delivery excellence, client collaboration, and platform leadership</p>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.3}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300 text-center">
+                <div className="text-4xl mb-4">🎯</div>
+                <h3 className="text-xl font-semibold mb-2 text-white font-space-grotesk">Award for Value of Commitment & Responsibility</h3>
+                <p className="text-green-400 mb-2">2022</p>
+                <p className="text-gray-300">For delivering deadline-driven projects without delay</p>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 bg-gray-50">
+      <section id="skills" className="py-20 bg-[#0A0A0A]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Skills</h2>
+          <AnimatedSection>
+            <h2 className="text-3xl font-bold text-center mb-12 text-white font-space-grotesk">Skills</h2>
+          </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Full-Stack & Cloud</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>MEAN Stack</span>
-                  <span className="text-blue-600">95%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Microsoft Azure</span>
-                  <span className="text-blue-600">90%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>React.js</span>
-                  <span className="text-blue-600">85%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Node.js</span>
-                  <span className="text-blue-600">90%</span>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Data & AI/ML</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>Spark & Hadoop</span>
-                  <span className="text-blue-600">85%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>PL/SQL</span>
-                  <span className="text-blue-600">90%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>PyTorch</span>
-                  <span className="text-blue-600">80%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>CNN Models</span>
-                  <span className="text-blue-600">75%</span>
+            <AnimatedSection delay={0.1}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-4 text-white font-space-grotesk">Full-Stack & Cloud</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">MEAN Stack</span>
+                    <span className="text-purple-400 font-medium">95%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">Microsoft Azure</span>
+                    <span className="text-purple-400 font-medium">90%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">React.js</span>
+                    <span className="text-purple-400 font-medium">85%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">Node.js</span>
+                    <span className="text-purple-400 font-medium">90%</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Leadership & Tools</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>GitHub Copilot</span>
-                  <span className="text-blue-600">95%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Team Leadership</span>
-                  <span className="text-blue-600">90%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Legacy Modernization</span>
-                  <span className="text-blue-600">85%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Mentorship</span>
-                  <span className="text-blue-600">90%</span>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-4 text-white font-space-grotesk">Data & AI/ML</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">Spark & Hadoop</span>
+                    <span className="text-blue-400 font-medium">85%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">PL/SQL</span>
+                    <span className="text-blue-400 font-medium">90%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">PyTorch</span>
+                    <span className="text-blue-400 font-medium">80%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">CNN Models</span>
+                    <span className="text-blue-400 font-medium">75%</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.3}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300">
+                <h3 className="text-xl font-semibold mb-4 text-white font-space-grotesk">Leadership & Tools</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">GitHub Copilot</span>
+                    <span className="text-green-400 font-medium">95%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">Team Leadership</span>
+                    <span className="text-green-400 font-medium">90%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">Legacy Modernization</span>
+                    <span className="text-green-400 font-medium">85%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">Mentorship</span>
+                    <span className="text-green-400 font-medium">90%</span>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Certifications Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Certifications</h2>
+          <AnimatedSection>
+            <h2 className="text-3xl font-bold text-center mb-12 text-white font-space-grotesk">Certifications</h2>
+          </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-6 rounded-lg text-center">
-              <div className="text-3xl mb-4">🎓</div>
-              <h3 className="text-lg font-semibold mb-2">GitHub Copilot SPOC Enablement Program</h3>
-              <p className="text-blue-600 mb-2">Capgemini, 2024</p>
-            </div>
-            <div className="bg-gray-50 p-6 rounded-lg text-center">
-              <div className="text-3xl mb-4">☁️</div>
-              <h3 className="text-lg font-semibold mb-2">Microsoft AZ-204: Developing Solutions for Microsoft Azure</h3>
-              <p className="text-blue-600 mb-2">Microsoft</p>
-            </div>
-            <div className="bg-gray-50 p-6 rounded-lg text-center">
-              <div className="text-3xl mb-4">📊</div>
-              <h3 className="text-lg font-semibold mb-2">Data Engineering Level 2</h3>
-              <p className="text-blue-600 mb-2">Societe Generale, 2023</p>
-              <p className="text-sm text-gray-600">Spark, Hadoop & ADLS</p>
-            </div>
+            <AnimatedSection delay={0.1}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 text-center">
+                <div className="text-3xl mb-4">🎓</div>
+                <h3 className="text-lg font-semibold mb-2 text-white font-space-grotesk">GitHub Copilot SPOC Enablement Program</h3>
+                <p className="text-purple-400 mb-2">Capgemini, 2024</p>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 text-center">
+                <div className="text-3xl mb-4">☁️</div>
+                <h3 className="text-lg font-semibold mb-2 text-white font-space-grotesk">Microsoft AZ-204: Developing Solutions for Microsoft Azure</h3>
+                <p className="text-blue-400 mb-2">Microsoft</p>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.3}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300 text-center">
+                <div className="text-3xl mb-4">📊</div>
+                <h3 className="text-lg font-semibold mb-2 text-white font-space-grotesk">Data Engineering Level 2</h3>
+                <p className="text-green-400 mb-2">Societe Generale, 2023</p>
+                <p className="text-sm text-gray-400">Spark, Hadoop & ADLS</p>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
+      <section id="contact" className="py-20 bg-[#0A0A0A]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Get In Touch</h2>
+          <AnimatedSection>
+            <h2 className="text-3xl font-bold text-center mb-12 text-white font-space-grotesk">Get In Touch</h2>
+          </AnimatedSection>
           <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <span className="text-blue-600 mr-3">📧</span>
-                  <span>shubham.kumar@email.com</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-blue-600 mr-3">📱</span>
-                  <span>+91 98765 43210</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-blue-600 mr-3">📍</span>
-                  <span>Delhi, India</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-blue-600 mr-3">💼</span>
-                  <span>LinkedIn: /in/shubham-kumar</span>
+            <AnimatedSection delay={0.2}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl">
+                <h3 className="text-xl font-semibold mb-6 text-white font-space-grotesk">Contact Information</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <span className="text-purple-400 mr-3">📧</span>
+                    <span className="text-gray-300">shubham.kumar@email.com</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-purple-400 mr-3">📱</span>
+                    <span className="text-gray-300">+91 98765 43210</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-purple-400 mr-3">📍</span>
+                    <span className="text-gray-300">Delhi, India</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-purple-400 mr-3">💼</span>
+                    <span className="text-gray-300">LinkedIn: /in/shubham-kumar</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                  <textarea
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    rows={4}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50"
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-                {submitStatus === 'success' && (
-                  <p className="text-green-600 text-center">Message sent successfully!</p>
-                )}
-                {submitStatus === 'error' && (
-                  <p className="text-red-600 text-center">Failed to send message. Please try again.</p>
-                )}
-              </form>
-            </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.4}>
+              <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10 shadow-xl">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-400"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-400"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                    <textarea
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      rows={4}
+                      className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-400"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-purple-600 text-white py-3 px-4 rounded-md hover:bg-purple-700 disabled:opacity-50 transition-all duration-300 font-medium"
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </button>
+                  {submitStatus === 'success' && (
+                    <p className="text-green-400 text-center">Message sent successfully!</p>
+                  )}
+                  {submitStatus === 'error' && (
+                    <p className="text-red-400 text-center">Failed to send message. Please try again.</p>
+                  )}
+                </form>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
