@@ -11,8 +11,8 @@
     "lint:fix": "cd frontend && npm run lint -- --fix",
     "type-check": "cd frontend && npx tsc --noEmit",
     "test": "echo 'No tests configured yet'",
-    "prepare": "husky install",
-    "postinstall": "husky install"
+    "prepare": "husky install || true",
+    "postinstall": "husky install || true"
   },
   "devDependencies": {
     "husky": "^8.0.3",
