@@ -1,6 +1,4 @@
 {
-  "public": true,
-  "passwordProtection": false,
   "headers": [
     {
       "source": "/(.*)",
