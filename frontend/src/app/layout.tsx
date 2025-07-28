@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/react';
+import PageTransition from '@/components/PageTransition';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,10 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://shubhamattri.vercel.app"),
   title: "Shubham Attri — Systems / Unfiltered",
-  description: "I build systems that don’t break. Technical Lead, Investment Banking. Data, infra, and API specialist. Writing, reflecting, and building in public.",
+  description: "I build systems that don't break. Technical Lead, Investment Banking. Data, infra, and API specialist. Writing, reflecting, and building in public.",
   openGraph: {
     title: "Shubham Attri — Systems / Unfiltered",
-    description: "I build systems that don’t break. Technical Lead, Investment Banking. Data, infra, and API specialist. Writing, reflecting, and building in public.",
+    description: "I build systems that don't break. Technical Lead, Investment Banking. Data, infra, and API specialist. Writing, reflecting, and building in public.",
     url: "/",
     siteName: "Shubham Attri",
     images: [
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Shubham Attri — Systems / Unfiltered",
-    description: "I build systems that don’t break. Technical Lead, Investment Banking. Data, infra, and API specialist. Writing, reflecting, and building in public.",
+    description: "I build systems that don't break. Technical Lead, Investment Banking. Data, infra, and API specialist. Writing, reflecting, and building in public.",
     images: [
       {
         url: "/og-default.png",
@@ -65,7 +66,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
         <Analytics />
       </body>
     </html>

@@ -64,7 +64,7 @@ export default function Work() {
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-green-500/5"></div>
           
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <AnimatedSection reducedMotion={true}>
+            <AnimatedSection>
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight font-space-grotesk leading-none mb-8">
                 <span className="bg-gradient-to-r from-white via-blue-100 to-green-100 bg-clip-text text-transparent">
                   Things I&#39;ve
@@ -76,13 +76,13 @@ export default function Work() {
               </h1>
             </AnimatedSection>
             
-            <AnimatedSection delay={0.1} reducedMotion={true}>
+            <AnimatedSection delay={0.3}>
               <p className="text-xl md:text-2xl text-gray-400 font-light mb-12 max-w-2xl mx-auto">
                 Systems, tools, and experiments that solve real problems.
               </p>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2} reducedMotion={true}>
+            <AnimatedSection delay={0.6}>
               <div className="flex justify-center">
                 <svg className="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -95,7 +95,7 @@ export default function Work() {
         {/* Projects Grid */}
         <section className="py-24 bg-[#0A0A0A]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedSection reducedMotion={true}>
+            <AnimatedSection>
               <h2 className="text-4xl font-bold text-center mb-16 text-white font-space-grotesk">
                 <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-green-400 bg-clip-text text-transparent">
                   Featured Projects
@@ -105,7 +105,7 @@ export default function Work() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, index) => (
-                <AnimatedSection key={project.title} delay={index * 0.05} reducedMotion={true}>
+                <AnimatedSection key={project.title} delay={index * 0.1}>
                   <div
                     className="group cursor-pointer hover:-translate-y-2 transition-transform duration-300"
                   >
@@ -185,7 +185,7 @@ export default function Work() {
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-[#0A0A0A] via-[#1A1A1A] to-[#0A0A0A]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <AnimatedSection reducedMotion={true}>
+            <AnimatedSection>
               <div className="backdrop-blur-xl bg-white/5 rounded-3xl p-12 border border-white/10 shadow-xl">
                 <h2 className="text-3xl font-bold text-white mb-6 font-space-grotesk">
                   Want a walkthrough of these builds?
@@ -210,7 +210,7 @@ export default function Work() {
         {/* Stats Section */}
         <section className="py-20 bg-[#0A0A0A]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedSection reducedMotion={true}>
+            <AnimatedSection>
               <div className="grid md:grid-cols-4 gap-8 text-center">
                 <div className="backdrop-blur-xl bg-white/5 rounded-2xl p-8 border border-white/10">
                   <div className="text-4xl font-bold text-purple-400 mb-2 font-space-grotesk">6+</div>
