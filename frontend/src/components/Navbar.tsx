@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const links = [
   { href: '/about', label: 'About' },
@@ -71,7 +72,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-full transition-all duration-300">
           <div className="flex items-center">
-            <a
+            <Link
               href="/"
               onClick={handleHomeClick}
               className={`font-space-grotesk cursor-pointer font-bold transition-all duration-300 ${
@@ -79,14 +80,14 @@ export default function Navbar() {
               } text-white hover:text-purple-400`}
             >
               Shubham Attri
-            </a>
+            </Link>
           </div>
           <div className="flex items-center space-x-8">
             {links.map((link) => {
               const isActive = pathname.startsWith(link.href.replace('/#contact', ''));
               if (link.label === 'Contact') {
                 return (
-                  <a
+                  <Link
                     key={link.href}
                     href={link.href}
                     onClick={handleContactClick}
@@ -106,11 +107,11 @@ export default function Navbar() {
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
                     )}
-                  </a>
+                  </Link>
                 );
               }
               return (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className={`relative transition-colors duration-200 px-1 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-purple-400 ${
@@ -129,7 +130,7 @@ export default function Navbar() {
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
-                </a>
+                </Link>
               );
             })}
             {/* Command Palette Button with Tooltip */}

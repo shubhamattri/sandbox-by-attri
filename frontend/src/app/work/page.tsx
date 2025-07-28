@@ -69,7 +69,7 @@ export default function Work() {
               <SparkleEffect>
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight font-space-grotesk leading-none mb-8">
                   <span className="bg-gradient-to-r from-white via-blue-100 to-green-100 bg-clip-text text-transparent">
-                    Things I've
+                    Things I&#39;ve
                   </span>
                   <br />
                   <span className="bg-gradient-to-r from-blue-200 via-green-100 to-white bg-clip-text text-transparent">

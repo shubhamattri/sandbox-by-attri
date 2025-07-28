@@ -1,15 +1,7 @@
-'use client';
-
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
-interface BlogLayoutProps {
-  children: ReactNode;
-  meta: Record<string, unknown>;
-  slug: string;
-}
-
-export default function BlogLayout({ children }: BlogLayoutProps) {
+export default function BlogLayout({ children }: { children: unknown }) {
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white px-4 py-8">
       <div className="max-w-3xl mx-auto">

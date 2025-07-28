@@ -11,7 +11,12 @@ export async function generateStaticParams() {
   return files.map((file) => ({ slug: file.replace(/\.mdx$/, '') }));
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function BlogPostPage(props: PageProps) {
+  const params = await props.params;
   const postPath = path.join(process.cwd(), 'src/content/blog', `${params.slug}.mdx`);
   if (!fs.existsSync(postPath)) return notFound();
   const source = fs.readFileSync(postPath, 'utf8');

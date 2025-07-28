@@ -12,7 +12,7 @@ export default function About() {
         <AnimatedSection>
           <section>
             <h1 className="text-5xl font-bold leading-tight tracking-tight font-space-grotesk mb-6">I build systems that don’t break.</h1>
-            <p className="mt-6 text-lg text-gray-300 leading-relaxed font-serif">I'm Shubham — a Technical Lead working in Investment Banking. For the last 5+ years, I’ve been solving deep data and infra problems: Spark pipelines on Kubernetes, CosmosDB distribution, Spring Boot APIs, platform migrations, production hardening — the unsexy stuff that keeps everything running.</p>
+            <p className="mt-6 text-lg text-gray-300 leading-relaxed font-serif">I&#39;m Shubham — a Technical Lead working in Investment Banking. For the last 5+ years, I&#39;ve been solving deep data and infra problems: Spark pipelines on Kubernetes, CosmosDB distribution, Spring Boot APIs, platform migrations, production hardening — the unsexy stuff that keeps everything running.</p>
             <p className="mt-4 text-gray-400 font-serif">I’ve led multi-year architecture rewrites, built APIs that saved hundreds of thousands of euros, and trained 30+ engineers on how to write cleaner, scalable, Copilot-augmented code.</p>
             <p className="mt-4 text-gray-400 font-serif">I’m not a founder (yet). But I build like one. And this site is where I write, reflect, and experiment — publicly.</p>
           </section>
