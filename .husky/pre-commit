@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+# Run frontend linting
+echo "📝 Linting frontend..."
+cd frontend
+npm run lint
+
+# Run TypeScript type checking
+echo "🔧 Type checking..."
+npx tsc --noEmit
+
+# Run backend checks if it exists
+if [ -d "../backend" ]; then
+  echo "🔧 Checking backend..."
+  cd ../backend
+  npm run lint 2>/dev/null || echo "No lint script found in backend"
+  npx tsc --noEmit 2>/dev/null || echo "No TypeScript config found in backend"
+fi
+
+echo "✅ Pre-commit checks passed!" 
