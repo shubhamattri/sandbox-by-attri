@@ -1,0 +1,34 @@
+---
+title: "How a Spark Job Almost Broke Production (And What We Learned)"
+date: "2025-07-28"
+tags: ["spark", "kubernetes", "rca", "infra"]
+excerpt: "Production nearly went down. The cause? One config, one assumption, and a lesson I won't forget."
+---
+
+## What Happened
+
+A routine Spark job on AKS started ballooning memory. Quartz scheduler hit OOM. Monitoring didn’t flag it — until L3 called at 6am.
+
+## Root Cause
+
+- JVM settings left default (dev-mode habits die hard)
+- Quartz jobs stacked due to poor backpressure
+- Monitoring assumed success on job start, not finish
+
+## The Fix
+
+- Memory profiling, then JVM tuning
+- Backpressure guard in the scheduler
+- Switched from polling to callback flow
+- Added custom alert using Grafana + Alerta
+
+## Lessons
+
+- “If it’s not alerting, it’s not monitoring.”
+- Don't treat Spark like a batch engine if you’re on infra built for real-time
+- RCAs should be readable — mine go to Notion + email. Every incident is onboarding gold.
+
+---
+
+**TL;DR**  
+Everyone’s afraid of prod. I respect it. And I prepare for it. 

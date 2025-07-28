@@ -80,7 +80,7 @@
 4. Import your GitHub repository
 5. Configure the project:
    - Framework Preset: Next.js
-   - Root Directory: `frontend`
+   - Root Directory: `sandbox-by-attri/frontend`
    - Build Command: `npm run build`
    - Output Directory: `.next`
 

@@ -24,14 +24,14 @@ You should see your beautiful personal website with:
 1. Go to [resend.com](https://resend.com)
 2. Sign up for a free account
 3. Get your API key
-4. Edit `frontend/.env.local`:
+4. Edit `sandbox-by-attri/frontend/.env.local`:
    ```
    RESEND_API_KEY=re_your_actual_api_key_here
    ```
 5. Restart the server: `npm run dev`
 
 ### 4. Customize Your Content
-Edit `frontend/src/app/page.tsx` to update:
+Edit `sandbox-by-attri/frontend/src/app/page.tsx` to update:
 - Your name and title
 - Experience details
 - Skills and percentages
@@ -39,7 +39,7 @@ Edit `frontend/src/app/page.tsx` to update:
 - Profile photo
 
 ### 5. Add Blog Posts
-Create new `.mdx` files in `frontend/src/content/blog/` following the format of `first-post.mdx`
+Create new `.mdx` files in `sandbox-by-attri/frontend/src/content/blog/` following the format of `first-post.mdx`
 
 ### 6. Deploy to Vercel
 1. Create a GitHub repository

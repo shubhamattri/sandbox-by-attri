@@ -1,4 +1,4 @@
-# Personal Website - Shubham Kumar
+# sandbox-by-attri
 
 A modern, feature-rich personal website built with the latest web technologies. This project showcases advanced frontend development with animations, blog functionality, and integrated backend services.
 
@@ -18,8 +18,8 @@ A modern, feature-rich personal website built with the latest web technologies. 
 - **MongoDB Atlas** - Cloud-hosted database (optional)
 
 ### Development & Deployment
-- **Vercel** - Frontend deployment (recommended)
-- **Railway/Render** - Backend deployment (if needed)
+- **Vercel** - sandbox-by-attri frontend deployment (recommended)
+- **Railway/Render** - sandbox-by-attri backend deployment (if needed)
 - **GitHub Actions** - CI/CD automation
 
 ## 🛠️ Core Features
@@ -41,7 +41,7 @@ A modern, feature-rich personal website built with the latest web technologies. 
 ## Project Structure
 
 ```
-ShubhamWebsite/
+sandbox-by-attri/
 ├── frontend/                    # Next.js application
 │   ├── src/
 │   │   ├── app/                # App router pages
